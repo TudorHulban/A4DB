@@ -1,0 +1,26 @@
+{
+ "last_update_timestamp": "2022-02-17T16:46:26.611952878+02:00",
+ "records": [
+  {
+   "_id": "4b7f766b-b7fd-4ed5-a3b7-97a24fc6e4f7",
+   "category": "phone",
+   "description": "S22",
+   "id": 11,
+   "instock": true
+  },
+  {
+   "_id": "aee220dd-434c-40ef-bcf7-37b1709e101e",
+   "category": "phone",
+   "description": "S23",
+   "id": 12,
+   "instock": true
+  },
+  {
+   "_id": "d3c51f83-16ea-4b32-9946-190aac243df1",
+   "category": "display",
+   "description": "X200",
+   "id": 13,
+   "instock": false
+  }
+ ]
+}
