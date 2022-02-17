@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-const testCollectionPath = "../testdata"
+const testCollectionPath = "testdata"
 const nameCollection = "phones"
 
 func initDB(t *testing.T, pathDB string, execute func(t *testing.T, db *DB)) {
@@ -17,6 +17,7 @@ func initDB(t *testing.T, pathDB string, execute func(t *testing.T, db *DB)) {
 
 	if db.HasCollection(nameCollection) {
 		require.NoError(t, db.DropCollection(nameCollection), "drop collection")
+		db.l.Infof("Collection '%s' was dropped.", nameCollection)
 	}
 
 	execute(t, db)
@@ -73,7 +74,7 @@ func TestInsertOneAndDelete(t *testing.T) {
 		require.Nil(t, objectRetry)
 		require.Equal(t, q.Count(), 0)
 
-		db.persistCollection(nameCollection)
+		require.NoError(t, db.persistCollection(nameCollection))
 	}
 
 	initDB(t, testCollectionPath, insertOneAndDelete)

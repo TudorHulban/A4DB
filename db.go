@@ -190,7 +190,7 @@ func (db *DB) DropCollection(name string) error {
 	}
 
 	delete(db.collections, name)
-	return os.Remove(db.folder + "/" + name + ".json")
+	return os.Remove(db.CollectionPath(name))
 }
 
 func (db *DB) InsertObjIntoCollection(c *collection, o *Object) (objectID, error) {
@@ -245,4 +245,12 @@ func (db *DB) Stats() []string {
 	}
 
 	return res
+}
+
+func (db DB) CollectionPath(name string) string {
+	path := db.folder + "/" + name + ".json"
+
+	db.l.Infof("Path for collection '%s': %s", name, path)
+
+	return path
 }
