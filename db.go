@@ -71,7 +71,7 @@ func (db *DB) addCollection(c *collection) error {
 			return err
 		}
 
-		return saveToFile(db.folder+"/"+c.name+".json", jsonBytes)
+		return saveToFile(db.CollectionPath(c.name), jsonBytes)
 	}
 
 	if len(c.objects) == 0 {
